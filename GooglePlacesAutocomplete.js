@@ -893,12 +893,14 @@ export default class GooglePlacesAutocomplete extends Component {
                   : this._onFocus
               }
               onBlur={
-                onBlur
+                Platform.OS === 'web'? () => {} : (
+                  onBlur
                   ? () => {
                       this._onBlur();
                       onBlur();
                     }
                   : this._onBlur
+                )
               }
               underlineColorAndroid={this.props.underlineColorAndroid}
               clearButtonMode={
